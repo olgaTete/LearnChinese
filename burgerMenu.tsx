@@ -109,7 +109,7 @@ const BurgerMenu = ({ user, videoUrl }: { user: User | null, videoUrl?:string })
                              
                                
                             >
-                                <Text fontSize={20}>{'Обучающее видео'}</Text>
+                                <Text fontSize={20}>{t('guideVideo')}</Text>
                             </Flex>
                             </VideoModal>
                         {user ? (
