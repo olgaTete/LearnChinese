@@ -1,42 +1,39 @@
-Made next changes:
+1. Header (index.tsx)
+📂 components/layout/header/index.tsx
 
-✅ 1. index.tsx (Header component)
-File location: components/layout/header/index.tsx
+✅ Интеграция: добавлен переключатель языка в основной макет шапки
 
-🔧 Changes made:
-✅ Language switcher integrated into the main header layout using the <LocaleSelect /> component.
+📌 Расположение: LocaleSelect рядом с меню Авторизации/Логина (только для десктопа)
 
-✅ The LocaleSelect is placed next to the Auth/Login menu, aligned properly for desktop view.
+🌐 Маршрутизация: поддержка локали через cookie и логику разбора pathname
 
-✅ The header now supports locale-aware routing using cookie and pathname logic.
+2. LocaleSelect (LocaleSelect.tsx)
+📂 components/layout/header/items/LocaleSelect.tsx
 
-✅ 2. localeSelect.tsx
-File location: components/layout/header/items/LocaleSelect.tsx
+✅ Определение языка: чтение из cookie NEXT_LOCALE
 
-🔧 Changes made:
-✅ Language detection from NEXT_LOCALE cookie.
+🔄 Переключение:
 
-✅ Dynamic language switch using:
+установка cookie через nookies.setCookie()
 
-Cookie update via nookies.setCookie()
+редирект на window.location.href = '/[locale]/[path]'
 
-Path-based redirect using window.location.href = /[locale]/[path]
+⚙️ Стабильность: useEffect + useState для устранения ошибок гидратации
 
-✅ useEffect + useState used to avoid hydration errors
+🧠 Умная обработка пути: удаляет старую локаль из URL и вставляет новую
 
-🧠 Automatically strips old locale from pathname and injects the new one.
+3. BurgerMenu (burgerMenu.tsx)
+📂 components/layout/header/items/burgerMenu.tsx
 
-✅ 3. burgerMenu.tsx
-File location: components/layout/header/items/burgerMenu.tsx
+🌍 Логика локали: скопирована из LocaleSelect.tsx
 
-🔧 Changes made:
-✅ Added locale detection logic using the same pattern as in LocaleSelect.tsx
+🔧 Пункты переключения:
 
-✅ Implemented language switch options styled like regular menu items, using Chakra UI <Flex> with .link styling
+стилизованы как обычные ссылки Chakra UI
 
-✅ The language options appear at the bottom of the drawer menu
+расположены внизу выдвижного меню
 
-✨ Switches between "Русский" and "English" depending on current locale
+✨ Доступные языки: “Русский” ↔️ “English” в зависимости от текущей локали
 
 
 ![image](https://github.com/user-attachments/assets/de617e95-fd75-4748-9369-cd03d71e2670)
